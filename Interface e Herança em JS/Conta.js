@@ -5,7 +5,23 @@ export class Conta{
         this._agencia = agencia;
     }
 
+    set cliente(novoValor){
+        if(novoValor instanceof Colaborador){
+            this._cliente = novoValor;
+        }
+        
+    }
+
+    get client(){
+        return this._cliente;
+    }
+
+    get saldo(){
+        return this._saldo;
+    }
+
     sacar(valor){
+        taxa = 1.1 * valor;
         if(this._saldo>= valor){
             this._saldo -= valor;
             return valor;
