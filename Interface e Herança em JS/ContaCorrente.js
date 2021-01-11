@@ -1,29 +1,16 @@
-import { Colaborador } from "./Colaborador.js";
+import { Conta } from "./Conta.js";
 
-export class ContaCorrente{
+export class ContaCorrente extends Conta{
     static numeroDeContas = 0;
-    
-    constructor(agencia,cliente){
-        this.agencia = agencia;
-        this.cliente = cliente;
-        this._saldo = 0;
+
+    constructor(cliente,agencia){
+        super(0,cliente,agencia);
         ContaCorrente.numeroDeContas += 1;
     }
     
+    //sobrescrevendo o comportamento de sacar
     sacar(valor){
-        if(this._saldo>= valor){
-            this._saldo -= valor;
-            return valor;
-        }
-    }
-
-    depositar(valor){
-        if(valor <= 0) return;
-        this._saldo += valor;
-    }
-
-    transferir(valor,conta){
-        const valorSacado = this.sacar(valor);
-        conta.depositar(valorSacado);
+        let taxa = 1.1;
+        return this._sacar(valor,taxa);
     }
 }
