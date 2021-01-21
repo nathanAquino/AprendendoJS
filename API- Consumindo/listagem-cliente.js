@@ -1,7 +1,9 @@
 const removeCliente = id => {
-  if(confirm("Deseja deletar o cliente ?"))
-  deletaCliente(id)
-  document.location.reload();
+  if(confirm("Deseja deletar o cliente ?")){
+    deletaCliente(id)
+    document.location.reload();
+  }
+  
 }
 const exibeCliente = (cpf, nome, id) => {
   const linha = document.createElement("tr");
